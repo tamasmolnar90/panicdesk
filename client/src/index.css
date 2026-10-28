@@ -1,0 +1,75 @@
+:root {
+  --color-primary: #2563eb;
+
+  --color-text-primary: #172033;
+  --color-text-secondary: #68758a;
+
+  --color-background: #f4f7fb;
+  --color-background-darker: #eaf0f8;
+
+  --color-border: #cad5e5;
+  --color-shadow: rgba(33, 58, 93, 0.2);
+
+  --color-open: #2563eb;
+  --color-background-open: #eaf2ff;
+  --color-in-progress: #a15c00;
+  --color-background-in-progress: #fff5dd;
+  --color-resolved: #087443;
+  --color-background-resolved: #e7f8ef;
+  --color-closed: #68758a;
+  --color-background-closed: #eef0f4;
+
+  --color-danger: #e94242;
+  --color-danger-background: #fff1f0;
+  --color-danger-border: #e942426c;
+
+  --color-warning: #fff8e7;
+
+  --color-white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  /* stable – mindig fenntartja a görgetősáv számára szükséges helyet, akkor is, ha éppen nincs szükség görgetésre. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: "Inter Variable", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.6rem;
+  max-width: 100rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}

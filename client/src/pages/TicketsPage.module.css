@@ -1,0 +1,118 @@
+.filterBar {
+  display: grid;
+  grid-template-columns: minmax(max-content, 2fr) repeat(
+      3,
+      minmax(max-content, 1fr)
+    );
+  gap: 1rem;
+  align-items: center;
+}
+
+.filterBar div select,
+.filterBar div input {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+  width: 100%;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.emptyState {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 16px;
+  margin-top: 2.8rem;
+}
+
+.emptyState p {
+  margin-top: 1rem;
+}
+
+.ticketGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  margin-top: 2.8rem;
+}
+
+.ticketCard {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2.2rem;
+}
+
+.ticketCard:hover {
+  box-shadow: 0 0 10px var(--color-shadow);
+}
+
+.ticketCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ticketDate {
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+}
+
+.ticketCard h2 {
+  margin: 1.7rem 0 0.8rem 0;
+  font-size: 1.9rem;
+}
+
+.ticketCard p {
+  color: var(--color-text-secondary);
+}
+
+.ticketMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+  margin: 2.8rem 0;
+  transform: translateX(1.5rem);
+}
+
+.pagination button {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  padding: 9px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.pagination button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.pagination span {
+  color: var(--color-text-primary);
+}
+
+.icon {
+  font-size: 1.6rem;
+}

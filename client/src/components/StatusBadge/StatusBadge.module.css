@@ -1,0 +1,26 @@
+.status {
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.statusOpen {
+  background: var(--color-background-open);
+  color: var(--color-open);
+}
+
+.statusInProgress {
+  background: var(--color-background-in-progress);
+  color: var(--color-in-progress);
+}
+
+.statusResolved {
+  background: var(--color-background-resolved);
+  color: var(--color-resolved);
+}
+
+.statusClosed {
+  background: var(--color-background-closed);
+  color: var(--color-closed);
+}

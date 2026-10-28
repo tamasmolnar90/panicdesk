@@ -1,0 +1,95 @@
+.registerPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.registerContainer {
+  background-color: var(--color-white);
+  width: 40rem;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1rem 2.8rem 2.8rem;
+}
+
+.registerHeader img {
+  display: block;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto;
+}
+
+.registerHeader h1 {
+  color: var(--color-text-primary);
+  font-weight: 800;
+  margin-top: 2.8rem;
+}
+
+.registerHeader p {
+  color: var(--color-text-secondary);
+  margin-top: 1.8rem;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.8rem;
+}
+
+.registerForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.registerForm div label {
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.registerForm div input {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-weight: 800;
+  padding: 1.3rem 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.formError {
+  background: var(--color-danger-background);
+  color: var(--color-danger);
+  font-size: 1.4rem;
+  border-radius: 0.8rem;
+  padding: 1rem 1.2rem;
+}
+
+.registerForm button {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 1.3rem 1.7rem;
+}
+
+.loginPrompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.loginPrompt span {
+  color: var(--color-text-secondary);
+  font-size: 1.4rem;
+}
+
+.loginPrompt a {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+}

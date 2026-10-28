@@ -1,0 +1,41 @@
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  margin-bottom: 2.8rem;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1.2rem 1.6rem;
+  border-radius: 10px;
+  margin-bottom: 2.8rem;
+}
+
+.icon {
+  font-size: 1.8rem;
+}
