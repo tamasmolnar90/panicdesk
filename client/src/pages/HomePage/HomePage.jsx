@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {

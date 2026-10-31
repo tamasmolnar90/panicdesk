@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import HomePage from "./pages/HomePage";
-import TicketsPage from "./pages/TicketsPage";
-import NewTicketPage from "./pages/NewTicketPage";
-import TicketDetailPage from "./pages/TicketDetailPage";
-import AdminDashboardPage from "./pages/AdminDashboardPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import HomePage from "./pages/HomePage/HomePage";
+import TicketsPage from "./pages/TicketsPage/TicketsPage";
+import NewTicketPage from "./pages/NewTicketPage/NewTicketPage";
+import TicketDetailPage from "./pages/TicketDetailPage/TicketDetailPage";
+import AdminDashboardPage from "./pages/AdminDashboardPage/AdminDashboardPage";
 
 export default function App() {
   return (

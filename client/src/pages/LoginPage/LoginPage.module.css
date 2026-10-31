@@ -1,62 +1,111 @@
-.registerPage {
+.loginPage {
   display: flex;
   justify-content: center;
   align-items: center;
+
   min-height: 100vh;
 }
 
-.registerContainer {
+.loginContainer {
   background-color: var(--color-white);
-  width: 40rem;
+  /* width: 40rem; */
+  width: 50rem;
   border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 1rem 2.8rem 2.8rem;
 }
 
-.registerHeader img {
+.loginHeader img {
   display: block;
   width: 12rem;
   height: 12rem;
   margin: 0 auto;
 }
 
-.registerHeader h1 {
+.loginHeader h1 {
   color: var(--color-text-primary);
   font-weight: 800;
   margin-top: 2.8rem;
 }
 
-.registerHeader p {
+.loginHeader p {
   color: var(--color-text-secondary);
   margin-top: 1.8rem;
 }
 
-.registerForm {
+.loginForm {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 2.8rem;
 }
 
-.registerForm div {
+/* .loginForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+} */
+
+.emailField,
+.passwordField {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.registerForm div label {
+/* .loginForm div label {
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+} */
+
+.emailField label,
+.passwordField label {
   color: var(--color-text-primary);
   font-size: 1.4rem;
   font-weight: 700;
 }
 
-.registerForm div input {
+/* .loginForm div input {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-weight: 800;
   padding: 1.3rem 1.4rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
+} */
+
+.emailField input,
+.passwordField input {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-weight: 800;
+  padding: 1.3rem 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.fieldError {
+  color: var(--color-danger);
+  font-size: 1.2rem;
+}
+
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.optionsRow div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.optionsRow a {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  font-weight: 800;
 }
 
 .formError {
@@ -67,7 +116,7 @@
   padding: 1rem 1.2rem;
 }
 
-.registerForm button {
+.loginForm button {
   background: var(--color-primary);
   color: var(--color-white);
   font-weight: 800;
@@ -75,7 +124,12 @@
   padding: 1.3rem 1.7rem;
 }
 
-.loginPrompt {
+.loginForm button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.registerPrompt {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,12 +137,12 @@
   margin-top: 2rem;
 }
 
-.loginPrompt span {
+.registerPrompt span {
   color: var(--color-text-secondary);
   font-size: 1.4rem;
 }
 
-.loginPrompt a {
+.registerPrompt a {
   color: var(--color-primary);
   font-size: 1.4rem;
   font-weight: 800;

@@ -2,9 +2,9 @@ import { Link } from "react-router";
 import { IoTicketOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-import Header from "../components/Header/Header";
-import PageHeader from "../components/PageHeader/PageHeader";
-import StatusBadge from "../components/StatusBadge/StatusBadge";
+import Header from "../../components/Header/Header";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import StatusBadge from "../../components/StatusBadge/StatusBadge";
 import styles from "./TicketsPage.module.css";
 
 export default function TicketsPage() {
@@ -74,7 +74,7 @@ export default function TicketsPage() {
       </div>
 
       <div className={styles.ticketGrid}>
-        <Link className={styles.ticketCard}>
+        <Link className={styles.ticketCard} to="/ticket/1">
           <div className={styles.ticketCardTop}>
             <StatusBadge status="open" />
             <span className={styles.ticketDate}>2026.10.22.</span>
@@ -90,7 +90,7 @@ export default function TicketsPage() {
           </div>
         </Link>
 
-        <Link className={styles.ticketCard}>
+        <Link className={styles.ticketCard} to="/ticket/2">
           <div className={styles.ticketCardTop}>
             <StatusBadge status="in_progress" />
             <span className={styles.ticketDate}>2026.10.22.</span>
@@ -106,7 +106,7 @@ export default function TicketsPage() {
           </div>
         </Link>
 
-        <Link className={styles.ticketCard}>
+        <Link className={styles.ticketCard} to="/ticket/3">
           <div className={styles.ticketCardTop}>
             <StatusBadge status="resolved" />
             <span className={styles.ticketDate}>2026.10.22.</span>
@@ -122,7 +122,7 @@ export default function TicketsPage() {
           </div>
         </Link>
 
-        <Link className={styles.ticketCard}>
+        <Link className={styles.ticketCard} to="/ticket/4">
           <div className={styles.ticketCardTop}>
             <StatusBadge status="closed" />
             <span className={styles.ticketDate}>2026.10.22.</span>

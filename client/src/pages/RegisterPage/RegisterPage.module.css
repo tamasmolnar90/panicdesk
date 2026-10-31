@@ -1,63 +1,68 @@
-.loginPage {
+.registerPage {
   display: flex;
   justify-content: center;
   align-items: center;
-
   min-height: 100vh;
 }
 
-.loginContainer {
+.registerContainer {
   background-color: var(--color-white);
   width: 40rem;
+  width: 50rem;
   border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 1rem 2.8rem 2.8rem;
 }
 
-.loginHeader img {
+.registerHeader img {
   display: block;
   width: 12rem;
   height: 12rem;
   margin: 0 auto;
 }
 
-.loginHeader h1 {
+.registerHeader h1 {
   color: var(--color-text-primary);
   font-weight: 800;
   margin-top: 2.8rem;
 }
 
-.loginHeader p {
+.registerHeader p {
   color: var(--color-text-secondary);
   margin-top: 1.8rem;
 }
 
-.loginForm {
+.registerForm {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 2.8rem;
 }
 
-.loginForm div {
+.registerForm div {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.loginForm div label {
+.registerForm div label {
   color: var(--color-text-primary);
   font-size: 1.4rem;
   font-weight: 700;
 }
 
-.loginForm div input {
+.registerForm div input {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-weight: 800;
   padding: 1.3rem 1.4rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
+}
+
+.fieldError {
+  color: var(--color-danger);
+  font-size: 1.2rem;
 }
 
 .formError {
@@ -68,7 +73,7 @@
   padding: 1rem 1.2rem;
 }
 
-.loginForm button {
+.registerForm button {
   background: var(--color-primary);
   color: var(--color-white);
   font-weight: 800;
@@ -76,7 +81,12 @@
   padding: 1.3rem 1.7rem;
 }
 
-.registerPrompt {
+.registerForm button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.loginPrompt {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,12 +94,12 @@
   margin-top: 2rem;
 }
 
-.registerPrompt span {
+.loginPrompt span {
   color: var(--color-text-secondary);
   font-size: 1.4rem;
 }
 
-.registerPrompt a {
+.loginPrompt a {
   color: var(--color-primary);
   font-size: 1.4rem;
   font-weight: 800;

@@ -17,12 +17,17 @@ https://react-icons.github.io/react-icons/
 Az alkalmazás minden oldalon komponensként hívja meg a header.jsx-et.
 Alatta a PageHeader.jsx-et hívja meg aminek paraméterként adom át az: eyebrow, title, description, linkText, linkTo, icon, így azonos kinézeten más kontentet tudok csinálni gyorsan és egyszerűen
 
+Regisztrációnál és Bejelentkezésnél kliens oldalon is kezelve vannak a form hibák, első szinten input mezőkben a required segítségével, második szinten clientErrors useState segítségével, így nem terheli a szervert feleslegesen, ha a klienst megkerülik, akkor harmadik szinten a szerver oldalon kezeli le, ha ott is akkor GG EZ.
+
 # Backend (Express)
 
 npm init -y
 npm install express
 npm install nodemon --save-dev
 npm install dotenv
+npm install pg
+npm install bcryptjs
+npm install cors
 
 Az index.js fájlt, server.js és app.js fájltra szétosztása, bevett szokás.
 Teszteknél portütközés elkerülése
@@ -35,3 +40,7 @@ Korai hibajelzés
 Típuskonverzió és alapértelmezések
 Egyszerűbb tesztelés és refaktorálás
 A dotenv betöltési sorrend probléma megszűnik
+
+# későbbi bővítési tervek:
+
+jelszó hossza, kis-és nagy betű, speciális karakter
