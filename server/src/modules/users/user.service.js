@@ -6,8 +6,10 @@ const findAllUsers = async () => {
       SELECT
         id,
         name,
-        email,
-        password_hash
+        email,      
+        role,
+        password_hash,
+        created_at
       FROM users
     `,
   );
@@ -15,7 +17,27 @@ const findAllUsers = async () => {
   return results.rows;
 };
 
-const findUserById = async () => {};
+const findUserById = async (userId) => {
+  const result = await pool.query(
+    `
+      SELECT
+        id,
+        name,
+        email,
+        role,
+        created_at
+      FROM users
+      WHERE id = $1
+    `,
+    [userId],
+  );
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  return result.rows[0];
+};
 
 const findUserByName = async () => {};
 

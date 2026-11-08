@@ -1,5 +1,13 @@
 import authService from "./auth.service.js";
 import { validateRegistration, validateLogin } from "./auth.validation.js";
+import {
+  createToken,
+  verifyToken,
+  getExpiresAt,
+  toAuthResponse,
+} from "../../utils/jwt.js";
+import { cookieOptions } from "../../config/cookieOptions.js";
+import userService from "../users/user.service.js";
 
 const register = async (req, res) => {
   const { name, email, password, passwordConfirm } = req.body;
@@ -15,14 +23,17 @@ const register = async (req, res) => {
     return res.status(400).json({ errors });
   }
 
+  const normalizedName = name.trim();
+  const normalizedEmail = email.trim().toLowerCase();
+
   try {
-    const register = await authService.register({
-      name,
-      email,
+    const user = await authService.register({
+      name: normalizedName,
+      email: normalizedEmail,
       password,
     });
 
-    if (!register) {
+    if (!user) {
       return res.status(404).json({
         message: "Server: Sikertelen regisztráció",
       });
@@ -30,15 +41,20 @@ const register = async (req, res) => {
 
     res.status(200).json({
       message: "Server: Sikeres regisztráció",
-      user: register,
+      user: user,
     });
   } catch (error) {
     // terminálba írja
-    console.error("Error creating user:", error);
+    console.error(
+      "Server: Hiba történt a felhasználó regisztrációjánál",
+      error,
+    );
 
     // frontendre küldi
     res.status(error.statusCode || 500).json({
-      message: error.statusCode ? error.message : "Database error",
+      message: error.statusCode
+        ? error.message
+        : "Server: Adatbázis-hiba történt",
     });
   }
 };
@@ -56,28 +72,57 @@ const login = async (req, res) => {
   }
 
   try {
-    const login = await authService.login({ email, password });
+    const user = await authService.login({ email, password });
 
-    if (!login) {
+    if (!user) {
       return res.status(401).json({
-        message: "Hibás email vagy jelszó",
+        message: "Server: Hibás email vagy jelszó",
       });
     }
 
-    res.status(200).json({
-      message: "A felhasználó sikeresen bejelentkezett",
-      user: login,
-    });
+    const userId = user.id;
+    const token = createToken(userId, user.role);
+    const payload = verifyToken(token);
+    res.cookie("access_token", token, cookieOptions);
+
+    res.status(200).json(toAuthResponse(user, payload));
   } catch (error) {
-    console.error("Error login user:", error);
+    console.error(
+      "Server: Hiba történt a felhasználó bejelentkezésénél",
+      error,
+    );
 
     res.status(500).json({
-      message: "Database error",
+      message: "Server: Adatbázis-hiba történt",
     });
   }
+};
+
+const logout = async (_req, res) => {
+  res.clearCookie("access_token", cookieOptions);
+  res.status(204).send();
+};
+
+const me = async (req, res) => {
+  const userId = req.user.id;
+
+  const user = await userService.findUserById(userId);
+
+  if (!user) {
+    return res
+      .status(401)
+      .json({ message: "Unauthorized", code: "UNAUTHORIZED" });
+  }
+
+  return res.json({
+    user,
+    expiresAt: getExpiresAt(req.authPayload),
+  });
 };
 
 export default {
   register,
   login,
+  logout,
+  me,
 };

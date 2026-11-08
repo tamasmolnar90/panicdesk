@@ -1,13 +1,14 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useState } from "react";
 import { validateLogin } from "./LoginPage.validation";
+import { useAuth } from "../../auth/useAuth";
 import logo from "../../assets/panic_desk_logo.png";
 import styles from "./LoginPage.module.css";
 
-const API_URL = "http://localhost:5000/bejelentkezes";
-
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
 
   const [form, setForm] = useState({
     email: "",
@@ -18,6 +19,7 @@ export default function LoginPage() {
   const [errors, setErrors] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [sessionMessage] = useState(location.state?.message || "");
 
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -40,30 +42,18 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
+      await login({ email: form.email, password: form.password });
+      // navigate("/");
+      const from = location.state?.from;
+      navigate(from ? `${from.pathname}${from.search}${from.hash}` : "/", {
+        replace: true,
       });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        if (data.errors) {
-          setErrors(data.errors);
-        } else {
-          setError(data.message || "Client: Sikertelen bejelentkezés");
-        }
-        return;
-      }
-
-      navigate("/");
     } catch (error) {
-      console.error(error);
-      setError("Client: Nem sikerült elérni a szervert");
+      if (error.status === 400 && error.data?.errors) {
+        setErrors(error.data.errors);
+      } else {
+        setError(error.message || "Client: Sikertelen bejelentkezés.");
+      }
     } finally {
       setLoading(false);
     }
@@ -119,19 +109,23 @@ export default function LoginPage() {
             )}
           </div>
 
-          <div className={styles.optionsRow}>
+          {/* <div className={styles.optionsRow}>
             <div>
               <input id="" name="" type="checkbox" value="" />
               <label htmlFor="vehicle1">Maradjak bejelentkezve</label>
             </div>
 
             <Link>Elfelejtett jelszó?</Link>
-          </div>
+          </div> */}
 
           {error && (
             <p className={styles.formError} role="alert">
               {error}
             </p>
+          )}
+
+          {sessionMessage && (
+            <p className={styles.formError}>{sessionMessage}</p>
           )}
 
           <button type="submit" disabled={loading}>

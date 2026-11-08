@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { validateRegister } from "./RegisterPage.validation";
+import { apiFetch } from "../../services/api";
 import logo from "../../assets/panic_desk_logo.png";
 import styles from "./RegisterPage.module.css";
-
-const API_URL = "http://localhost:5000/regisztracio";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -42,9 +41,8 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const res = await fetch(API_URL, {
+      const data = await apiFetch("/regisztracio", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -53,21 +51,16 @@ export default function RegisterPage() {
         }),
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        if (data.errors) {
-          setErrors(data.errors);
-        } else {
-          setError(data.message || "Client: Sikertelen regisztráció");
-        }
-        return;
-      }
-
-      navigate("/");
+      // navigate("/", { state: { message: data.message } });
+      navigate("/bejelentkezes", { state: { message: data.message } });
     } catch (error) {
       console.error(error);
-      setError("Client: Nem sikerült elérni a szervert");
+
+      if (error.status === 400 && error.data?.errors) {
+        setErrors(error.data.errors);
+      } else {
+        setError(error.message || "Client: Nem sikerült elérni a szervert");
+      }
     } finally {
       setLoading(false);
     }
@@ -156,7 +149,7 @@ export default function RegisterPage() {
               </p>
             )}
 
-            {errors.password && (
+            {errors.passwordConfirm && (
               <p className={styles.fieldError}>{errors.passwordConfirm}</p>
             )}
           </div>

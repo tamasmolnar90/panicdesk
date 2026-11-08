@@ -7,6 +7,8 @@ import styles from "./NewTicketPage.module.css";
 export default function NewTicketPage() {
   const navigate = useNavigate();
 
+  // const handleSubmit = async (event) => {};
+
   return (
     <>
       <Header />
@@ -20,7 +22,7 @@ export default function NewTicketPage() {
         icon={IoArrowUndoOutline}
       />
 
-      <form className={styles.ticketForm} action="">
+      <form className={styles.ticketForm} /*onSubmit={handleSubmit}*/>
         <div className={styles.titleField}>
           <label htmlFor="title">Cím</label>
           <input id="title" type="text" placeholder="Rövid, leíró cím" />

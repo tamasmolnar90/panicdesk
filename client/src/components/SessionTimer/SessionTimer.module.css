@@ -1,0 +1,8 @@
+.timer {
+  color: var(--color-text-primary);
+  font-size: 1.6rem;
+}
+
+.expiring {
+  color: var(--color-danger);
+}

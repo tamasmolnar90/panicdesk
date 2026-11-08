@@ -18,7 +18,7 @@ const register = async ({ name, email, password }) => {
     throw new AppError(
       409,
       "EMAIL_IN_USE",
-      "Ez az e-mail cím már használatban van.",
+      "Server: Ez az e-mail cím már használatban van.",
     );
   }
 
@@ -45,7 +45,8 @@ const login = async ({ email, password }) => {
         id,
         name,
         email,
-        password_hash
+        password_hash,
+        role
       FROM users
       WHERE email = $1
     `,
@@ -64,10 +65,12 @@ const login = async ({ email, password }) => {
     return null;
   }
 
+  // csak teszt miatt
   return {
     id: user.id,
     name: user.name,
     email: user.email,
+    role: user.role,
   };
 };
 

@@ -26,8 +26,10 @@ npm install express
 npm install nodemon --save-dev
 npm install dotenv
 npm install pg
-npm install bcryptjs
 npm install cors
+npm install bcryptjs
+npm install jsonwebtoken
+npm install cookie-parser
 
 Az index.js fájlt, server.js és app.js fájltra szétosztása, bevett szokás.
 Teszteknél portütközés elkerülése
@@ -40,6 +42,9 @@ Korai hibajelzés
 Típuskonverzió és alapértelmezések
 Egyszerűbb tesztelés és refaktorálás
 A dotenv betöltési sorrend probléma megszűnik
+
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+Ezzel a paranccsal tudok generáltatni random 128 karakter hosszú JWT secrethez
 
 # későbbi bővítési tervek:
 

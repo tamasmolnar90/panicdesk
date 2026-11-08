@@ -6,10 +6,10 @@ const getAllUsers = async (_req, res) => {
 
     res.status(200).json(users);
   } catch (error) {
-    console.error("Error fetching users:", error);
+    console.error("Server: Hiba történt a felhasználók lekérdezésekor:", error);
 
     res.status(500).json({
-      message: "Database error",
+      message: "Server: Adatbázis-hiba történt",
     });
   }
 };
@@ -23,7 +23,7 @@ const deleteUser = async (req, res) => {
 
   if (!id) {
     return res.status(400).json({
-      message: "Invalid user ID",
+      message: "Server: Érvénytelen felhasználói azonosító",
     });
   }
 
@@ -32,16 +32,16 @@ const deleteUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        message: "Server: A felhasználó nem található",
       });
     }
 
     res.status(200).json(user);
   } catch (error) {
-    console.error("Error deleting book:", error);
+    console.error("Server: Hiba történt a felhasználó törlésekor:", error);
 
     res.status(500).json({
-      message: "Database error",
+      message: "Server: Adatbázis-hiba történt",
     });
   }
 };
