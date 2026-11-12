@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import { IoArrowUndoOutline } from "react-icons/io5";
-import Header from "../../components/Header/Header";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import styles from "./NewTicketPage.module.css";
 
@@ -11,8 +10,6 @@ export default function NewTicketPage() {
 
   return (
     <>
-      <Header />
-
       <PageHeader
         eyebrow="Új hibajegy"
         title="Probléma bejelentése"

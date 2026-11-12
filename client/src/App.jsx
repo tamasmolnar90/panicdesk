@@ -1,31 +1,41 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import HomePage from "./pages/HomePage/HomePage";
-import TicketsPage from "./pages/TicketsPage/TicketsPage";
-import NewTicketPage from "./pages/NewTicketPage/NewTicketPage";
-import TicketDetailPage from "./pages/TicketDetailPage/TicketDetailPage";
-import AdminDashboardPage from "./pages/AdminDashboardPage/AdminDashboardPage";
-
 import AuthProvider from "./auth/AuthProvider";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import MainLayout from "./layouts/MainLayout";
+
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const TicketsPage = lazy(() => import("./pages/TicketsPage/TicketsPage"));
+const NewTicketPage = lazy(() => import("./pages/NewTicketPage/NewTicketPage"));
+const TicketDetailPage = lazy(
+  () => import("./pages/TicketDetailPage/TicketDetailPage"),
+);
+const AdminDashboardPage = lazy(
+  () => import("./pages/AdminDashboardPage/AdminDashboardPage"),
+);
 
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route path="/bejelentkezes" element={<LoginPage />} />
-          <Route path="/regisztracio" element={<RegisterPage />} />
+        <Suspense fallback={<p>Loading...</p>}>
+          <Routes>
+            <Route path="/bejelentkezes" element={<LoginPage />} />
+            <Route path="/regisztracio" element={<RegisterPage />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/jegyek" element={<TicketsPage />} />
-            <Route path="/jegy-letrehozasa" element={<NewTicketPage />} />
-            <Route path="/jegyek/:id" element={<TicketDetailPage />} />
-            <Route path="/admin" element={<AdminDashboardPage />} />
-          </Route>
-        </Routes>
+            <Route element={<ProtectedRoute />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/jegyek" element={<TicketsPage />} />
+                <Route path="/jegy-letrehozasa" element={<NewTicketPage />} />
+                <Route path="/jegyek/:id" element={<TicketDetailPage />} />
+                <Route path="/admin" element={<AdminDashboardPage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Suspense>
       </AuthProvider>
     </BrowserRouter>
   );

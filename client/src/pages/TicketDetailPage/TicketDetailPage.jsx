@@ -1,5 +1,4 @@
 import { IoArrowUndoOutline } from "react-icons/io5";
-import Header from "../../components/Header/Header";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import StatusBadge from "../../components/StatusBadge/StatusBadge";
 import styles from "./TicketDetailPage.module.css";
@@ -7,8 +6,6 @@ import styles from "./TicketDetailPage.module.css";
 export default function TicketDetailPage() {
   return (
     <>
-      <Header />
-
       <PageHeader
         eyebrow="Hibajegy"
         title="Monitor cseréje"

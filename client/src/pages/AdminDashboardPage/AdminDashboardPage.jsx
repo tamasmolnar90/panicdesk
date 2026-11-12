@@ -1,13 +1,10 @@
 import { IoTicketOutline } from "react-icons/io5";
-import Header from "../../components/Header/Header";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import styles from "./AdminDashboardPage.module.css";
 
 export default function AdminDashboardPage() {
   return (
     <>
-      <Header />
-
       <PageHeader
         eyebrow="Admin dashboard"
         title="Áttekintés"

@@ -1,39 +1,34 @@
 import { Link } from "react-router";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useAuth } from "../../auth/useAuth";
-import Header from "../../components/Header/Header";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   const { user } = useAuth();
 
   return (
-    <>
-      <Header />
+    <div className={styles.welcomeCard}>
+      <h1>Szia, {user?.name}</h1>
 
-      <div className={styles.welcomeCard}>
-        <h1>Szia, {user?.name}</h1>
+      <p>Kezeld a bejelentett hibákat és kövesd a megoldásukat egy helyen.</p>
 
-        <p>Kezeld a bejelentett hibákat és kövesd a megoldásukat egy helyen.</p>
+      <span className={styles.roleBadge}>
+        {user?.role === "ADMIN" ? "Adminisztrátor" : "Ügyfél"}
+      </span>
 
-        <span className={styles.roleBadge}>
-          {user?.role === "ADMIN" ? "Adminisztrátor" : "Ügyfél"}
-        </span>
+      <div className={styles.linksContainer}>
+        <Link className={styles.ticketLink} to="/jegyek">
+          <span>Jegyeim megnyitása</span>
+          <IoIosArrowDroprightCircle className={styles.icon} />
+        </Link>
 
-        <div className={styles.linksContainer}>
-          <Link className={styles.ticketLink} to="/jegyek">
-            <span>Jegyeim megnyitása</span>
+        {user?.role === "ADMIN" && (
+          <Link className={styles.adminLink} to="/admin">
+            <span>Admin dashboard</span>
             <IoIosArrowDroprightCircle className={styles.icon} />
           </Link>
-
-          {user?.role === "ADMIN" && (
-            <Link className={styles.adminLink} to="/admin">
-              <span>Admin dashboard</span>
-              <IoIosArrowDroprightCircle className={styles.icon} />
-            </Link>
-          )}
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

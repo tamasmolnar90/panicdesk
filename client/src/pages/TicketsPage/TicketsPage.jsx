@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { IoTicketOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-import Header from "../../components/Header/Header";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import StatusBadge from "../../components/StatusBadge/StatusBadge";
 import styles from "./TicketsPage.module.css";
@@ -10,8 +9,6 @@ import styles from "./TicketsPage.module.css";
 export default function TicketsPage() {
   return (
     <>
-      <Header />
-
       <PageHeader
         eyebrow="Hibajegyek"
         title="Jegyeim"
