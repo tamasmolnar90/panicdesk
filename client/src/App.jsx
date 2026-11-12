@@ -81,6 +81,19 @@ const AdminDashboardPage = lazy(
 //     ),
 // );
 
+const AdminUsersPage = lazy(
+  () => import("./pages/AdminUsersPage/AdminUsersPage"),
+);
+// const AdminUsersPage = lazy(
+//   () =>
+//     new Promise((resolve) =>
+//       setTimeout(
+//         () => resolve(import("./pages/AdminUsersPage/AdminUsersPage")),
+//         1500,
+//       ),
+//     ),
+// );
+
 const loadingStyle = {
   display: "flex",
   justifyContent: "center",
@@ -104,7 +117,11 @@ export default function App() {
                 <Route path="/jegyek" element={<TicketsPage />} />
                 <Route path="/jegy-letrehozasa" element={<NewTicketPage />} />
                 <Route path="/jegyek/:id" element={<TicketDetailPage />} />
-                <Route path="/admin" element={<AdminDashboardPage />} />
+                <Route
+                  path="/admin-dashboard"
+                  element={<AdminDashboardPage />}
+                />
+                <Route path="/admin-users" element={<AdminUsersPage />} />
               </Route>
             </Route>
           </Routes>

@@ -1,4 +1,4 @@
-import { IoTicketOutline } from "react-icons/io5";
+import { FaUsers } from "react-icons/fa";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import styles from "./AdminDashboardPage.module.css";
 
@@ -9,9 +9,9 @@ export default function AdminDashboardPage() {
         eyebrow="Admin dashboard"
         title="Áttekintés"
         description="A PanicDesk aktuális állapota és törzsadatai."
-        linkText="Jegyek megnyitása"
-        linkTo="/jegyek"
-        icon={IoTicketOutline}
+        linkText="Felhasználók kezelése"
+        linkTo="/admin-users"
+        icon={FaUsers}
       />
 
       <div className={styles.stats}>

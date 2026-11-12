@@ -23,7 +23,7 @@ export default function HomePage() {
         </Link>
 
         {user?.role === "ADMIN" && (
-          <Link className={styles.adminLink} to="/admin">
+          <Link className={styles.adminLink} to="/admin-dashboard">
             <span>Admin dashboard</span>
             <IoIosArrowDroprightCircle className={styles.icon} />
           </Link>
