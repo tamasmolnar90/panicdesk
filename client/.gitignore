@@ -1,3 +1,10 @@
+# Environment variables
+.env
+.env.*
+
+# Allow example environment file
+!.env.example
+
 # Logs
 logs
 *.log
