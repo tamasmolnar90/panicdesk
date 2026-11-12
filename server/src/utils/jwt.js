@@ -1,12 +1,11 @@
 import jwt from "jsonwebtoken";
-import { env } from "../config/env.js";
 
 const createToken = (userId, role) =>
-  jwt.sign({ sub: userId, role }, env.jwt.secret, {
-    expiresIn: env.jwt.expiresIn,
+  jwt.sign({ sub: userId, role }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
-const verifyToken = (token) => jwt.verify(token, env.jwt.secret);
+const verifyToken = (token) => jwt.verify(token, process.env.JWT_SECRET);
 
 const getExpiresAt = (payload) => payload.exp * 1000;
 
